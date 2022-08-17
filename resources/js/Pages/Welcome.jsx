@@ -1,5 +1,6 @@
 import React from 'react';
 import { Head } from '@inertiajs/inertia-react';
+import ApplicationLogo from '@/Components/ApplicationLogo';
 
 export default function Welcome(props) {
     return (
@@ -9,6 +10,9 @@ export default function Welcome(props) {
 
                 <div className="text-center max-w-6xl mx-auto sm:px-6 lg:px-8">
                     <div>
+                        <div className='mb-5 text-8xl'>
+                            <ApplicationLogo />
+                        </div>
                         <div className="text-4xl">
                             Welcome to
                         </div>
