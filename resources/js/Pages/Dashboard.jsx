@@ -1,8 +1,13 @@
 import React from 'react';
 import Authenticated from '@/Layouts/Authenticated';
-import { Head } from '@inertiajs/inertia-react';
+import { Head, Link } from '@inertiajs/inertia-react';
 
 export default function Dashboard(props) {
+    
+    const addQuest = (e) => {
+        post(route('quests'))
+    }
+
     return (
         <Authenticated
             auth={props.auth}
@@ -17,7 +22,9 @@ export default function Dashboard(props) {
                        ⚔️ Quests ⚔️
                     </div>
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 bg-white border-b border-gray-200">Quests</div>
+                        <div className="p-6 bg-white border-b border-gray-200">
+                            <button onClick={addQuest}>➕ Add Quest</button>
+                        </div>
                     </div>
                 </div>
             </div>

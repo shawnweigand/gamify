@@ -21,7 +21,7 @@ class QuestController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Dashboard');
+        return Inertia::render('Dashboard', ['quests' => Quest::all()]);
     }
 
     /**
@@ -42,7 +42,9 @@ class QuestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Quest::create([
+            'name' => 'Test Quest'
+        ]);
     }
 
     /**
