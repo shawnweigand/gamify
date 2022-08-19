@@ -4,10 +4,6 @@ import { Head, Link } from '@inertiajs/inertia-react';
 
 export default function Dashboard(props) {
     
-    const addQuest = (e) => {
-        post(route('quests'))
-    }
-
     return (
         <Authenticated
             auth={props.auth}
@@ -23,10 +19,14 @@ export default function Dashboard(props) {
                     </div>
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 bg-white border-b border-gray-200">
-                            <button onClick={addQuest}>➕ Add Quest</button>
+                            <div>
+                                <div>{props.auth.user.name}</div>
+                                <input type="text" placeholder="Type quest here"  /> {/*value={this.state.value} onChange={this.handleChange} />*/}
+                                <Link className='pl-3' preserveScroll href="/quests" method="post" as="button" data={{ name: "New Quest" }}>➕ Add Quest</Link>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </div >
             </div>
         </Authenticated>
     );

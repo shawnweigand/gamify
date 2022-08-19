@@ -43,8 +43,9 @@ class QuestController extends Controller
     public function store(Request $request)
     {
         Quest::create([
-            'name' => 'Test Quest'
+            'name' => $request->name
         ]);
+        return redirect("/dashboard");
     }
 
     /**
