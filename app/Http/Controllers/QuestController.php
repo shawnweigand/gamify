@@ -43,7 +43,7 @@ class QuestController extends Controller
     public function store(Request $request)
     {
         Quest::create([
-            'name' => $request->name
+            'name' => $request->quest_name
         ]);
         return redirect("/dashboard");
     }

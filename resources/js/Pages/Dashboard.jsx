@@ -1,9 +1,21 @@
 import React from 'react';
 import Authenticated from '@/Layouts/Authenticated';
-import { Head, Link } from '@inertiajs/inertia-react';
+import { Head, Link, useForm } from '@inertiajs/inertia-react';
 
 export default function Dashboard(props) {
     
+    const { data, setData, post, processing, reset } = useForm({
+        quest_name: "",
+    })
+
+    function submit(e) {
+        e.preventDefault()
+        post('/quests', {
+            preserveScroll: true,
+            onSuccess: () => reset('quest_name'),
+        })
+    }
+
     return (
         <Authenticated
             auth={props.auth}
@@ -19,6 +31,15 @@ export default function Dashboard(props) {
                     </div>
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 bg-white border-b border-gray-200">
+
+
+                        <form onSubmit={submit}>
+                            <input type="text" value={data.quest_name} onChange={e => setData('quest_name', e.target.value)} />
+                            <button type="submit" disabled={processing}>Submit</button>
+                        </form>
+
+
+
                             <div>
                                 <div>{props.auth.user.name}</div>
                                 <input type="text" placeholder="Type quest here"  /> {/*value={this.state.value} onChange={this.handleChange} />*/}
