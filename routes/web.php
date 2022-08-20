@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\QuestController;
+use App\Models\Quest;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -18,7 +19,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     if (auth()->check()) {
-        return redirect('/dashboard');
+        return redirect('/quests');
     }
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -29,7 +30,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return redirect('/quests');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resources([

@@ -21,7 +21,10 @@ class QuestController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Dashboard', ['quests' => Quest::all()]);
+        $quests = Quest::all();
+        return Inertia::render('Dashboard', [
+            'quests' => $quests
+        ]);
     }
 
     /**
