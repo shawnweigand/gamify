@@ -45,6 +45,10 @@ class QuestController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'quest_name' => 'required|unique:quests,name',
+        ]);
+
         Quest::create([
             'name' => $request->quest_name
         ]);

@@ -46,6 +46,7 @@ export default function Dashboard(props) {
                             <form onSubmit={submit}>
                                 <input placeholder="Type quest here" type="text" value={data.quest_name} onChange={e => setData('quest_name', e.target.value)} />
                                 <button className='pl-3' type="submit" disabled={processing}>➕ Add Quest</button>
+                                <h1 className='text-sm text-red-400'>{props.errors.quest_name}</h1>
                             </form>
                         </div>
                     </div>
