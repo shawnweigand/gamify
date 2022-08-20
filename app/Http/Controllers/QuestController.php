@@ -48,7 +48,7 @@ class QuestController extends Controller
         Quest::create([
             'name' => $request->quest_name
         ]);
-        return redirect("/dashboard");
+        return redirect("/quests");
     }
 
     /**
@@ -93,6 +93,7 @@ class QuestController extends Controller
      */
     public function destroy(Quest $quest)
     {
-        //
+        Quest::destroy($quest->id);
+        return redirect("/quests");
     }
 }

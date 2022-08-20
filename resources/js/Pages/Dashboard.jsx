@@ -31,7 +31,14 @@ export default function Dashboard(props) {
                     </div>
 
                     {props.quests.map((quest) => (
-                        <div>{quest.name}</div>
+                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                            <div className="relative p-6 bg-white border-b border-gray-200">
+                                {quest.name}
+                                <Link href={route('quests.destroy',quest.id)} method="delete" preserveScroll="true" as="button" type="button" className="absolute right-0 inline-block mr-5 px-6 py-2.5 bg-red-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out">
+                                    Delete
+                                </Link>
+                            </div>
+                        </div>
                     ))}
                     
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
