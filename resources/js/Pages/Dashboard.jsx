@@ -32,7 +32,6 @@ export default function Dashboard(props) {
 
                     {props.quests.map((quest) => (
                         <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-3">
-                            {/* <a data-bs-toggle="collapse" href={"#" + quest.name} role="button" aria-expanded="false" aria-controls={quest.name}> */}
                                 <div className="relative pl-6 bg-white border-b border-gray-200">
                                         <button class='w-full h-16 text-left' data-bs-toggle="collapse" href={"#" + quest.name} aria-expanded="false" aria-controls={quest.name}>
                                             {quest.name}
@@ -41,7 +40,6 @@ export default function Dashboard(props) {
                                         Delete
                                     </Link>
                                 </div>
-                            {/* </a> */}
                             <div class='p-5 collapse' id={quest.name}>
                                 Example mission dropdown
                             </div>
