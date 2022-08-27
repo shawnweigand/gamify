@@ -36,7 +36,15 @@ class MissionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'mission_name' => 'required|unique:quests,name',
+        ]);
+
+        Mission::create([
+            'name' => $request->mission_name,
+            'quest_id' => $request->quest_id
+        ]);
+        return redirect("/quests");
     }
 
     /**

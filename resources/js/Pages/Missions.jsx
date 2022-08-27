@@ -1,8 +1,8 @@
-import { Link } from '@inertiajs/inertia-react';
 import React from 'react';
+import { Link } from '@inertiajs/inertia-react';
 
 export default function Missions(props) {
-    
+
     return (
         <>
         <div className='p-4 relative'>
