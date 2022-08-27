@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Quest extends Model
+class Mission extends Model
 {
     use HasFactory;
 
@@ -13,7 +13,7 @@ class Quest extends Model
         'name'
     ];
 
-    public function missions() {
-        return $this->hasMany(Mission::class);
+    public function quest() {
+        return $this->belongsTo(Quest::class);
     }
 }

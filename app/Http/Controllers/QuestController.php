@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Quest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 class QuestController extends Controller
@@ -22,8 +23,16 @@ class QuestController extends Controller
     public function index()
     {
         $quests = Quest::all();
+        $missionsArray = [];
+        foreach ($quests as $quest) {
+           if (!Quest::find($quest->id)->missions->isEmpty()) {
+                $missions = Quest::find($quest->id)->missions;
+                $missionsArray[$quest->id] = $missions;
+           }
+        }
         return Inertia::render('Dashboard', [
-            'quests' => $quests
+            'quests' => $quests,
+            'missions' => $missionsArray
         ]);
     }
 
@@ -52,7 +61,7 @@ class QuestController extends Controller
         Quest::create([
             'name' => $request->quest_name
         ]);
-        return redirect("/quests");
+        return Redirect::route("/quests");
     }
 
     /**
@@ -98,6 +107,6 @@ class QuestController extends Controller
     public function destroy(Quest $quest)
     {
         Quest::destroy($quest->id);
-        return redirect("/quests");
+        return Redirect::route("/quests");
     }
 }
