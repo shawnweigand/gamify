@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mission;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class MissionController extends Controller
 {
@@ -80,6 +81,7 @@ class MissionController extends Controller
      */
     public function destroy(Mission $mission)
     {
-        //
+        Mission::destroy($mission->id);
+        return redirect("/quests");
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MissionController;
 use App\Http\Controllers\QuestController;
 use App\Models\Quest;
 use Illuminate\Foundation\Application;
@@ -34,7 +35,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resources([
-    'quests' => QuestController::class
+    'quests' => QuestController::class,
+    'missions' => MissionController::class
 ]);
 
 require __DIR__.'/auth.php';
