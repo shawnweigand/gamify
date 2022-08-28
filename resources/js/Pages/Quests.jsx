@@ -25,12 +25,13 @@ export default function Quests(props) {
             missions.forEach((mission, index) => {
                 response.push(mission);
             })
+
             return (
             <>
             {response.map((mission) => (
                 <Missions mission={mission} errors={props.errors} />
             ))}
-            <form onSubmit={submit}>
+            <form onSubmit={submit} className='pt-3'>
                 <input placeholder="Type mission here" type="text" value={data.mission_name} onChange={e => setData('mission_name', e.target.value)} />
                 <button className='pl-3' type="submit" disabled={processing}>➕ Add Mission</button>
                 <h1 className='text-sm text-red-400'>{props.errors.mission_name}</h1>
