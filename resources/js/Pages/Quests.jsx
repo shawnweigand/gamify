@@ -28,7 +28,7 @@ export default function Quests(props) {
             return (
             <>
             {response.map((mission) => (
-                <Missions mission={mission} />
+                <Missions mission={mission} errors={props.errors} />
             ))}
             <form onSubmit={submit}>
                 <input placeholder="Type mission here" type="text" value={data.mission_name} onChange={e => setData('mission_name', e.target.value)} />
