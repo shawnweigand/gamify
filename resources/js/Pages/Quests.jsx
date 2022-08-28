@@ -39,7 +39,16 @@ export default function Quests(props) {
             </>
             );
         }
-        return "No missions";
+        return (
+        <>
+        <div>No missions yet</div>
+        <form onSubmit={submit} className='pt-3'>
+            <input placeholder="Type mission here" type="text" value={data.mission_name} onChange={e => setData('mission_name', e.target.value)} />
+            <button className='pl-3' type="submit" disabled={processing}>➕ Add Mission</button>
+            <h1 className='text-sm text-red-400'>{props.errors.mission_name}</h1>
+        </form>
+        </>
+        );
     }
 
     return (
