@@ -61,6 +61,7 @@ class QuestController extends Controller
         Quest::create([
             'name' => $request->quest_name
         ]);
+        
         return Redirect::route("/quests");
     }
 

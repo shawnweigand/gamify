@@ -5,6 +5,20 @@ import { Link, useForm } from '@inertiajs/inertia-react';
 export default function Quests(props) {
 
     function listMissions(quest_id) {
+
+        const { data, setData, post, processing, reset } = useForm({
+            mission_name: "",
+            quest_id: quest_id,
+        })
+    
+        function submit(e) {
+            e.preventDefault()
+            post('/missions', {
+                preserveScroll: true,
+                onSuccess: () => reset('mission_name'),
+            })
+        }
+
         var missions = props.missions[quest_id];
         if (missions) {
             var response = [];
@@ -14,31 +28,17 @@ export default function Quests(props) {
             return (
             <>
             {response.map((mission) => (
-                <Missions mission={mission}/>
+                <Missions mission={mission} />
             ))}
             <form onSubmit={submit}>
                 <input placeholder="Type mission here" type="text" value={data.mission_name} onChange={e => setData('mission_name', e.target.value)} />
-                <input type="hidden" name="quest_id" value={quest_id} />
                 <button className='pl-3' type="submit" disabled={processing}>➕ Add Mission</button>
-                {/* <h1 className='text-sm text-red-400'>{props.errors.mission_name}</h1> */}
+                <h1 className='text-sm text-red-400'>{props.errors.mission_name}</h1>
             </form>
             </>
             );
         }
         return "No missions";
-    }
-
-    const { data, setData, post, processing, reset } = useForm({
-        mission_name: "",
-        quest_id: ""
-    })
-
-    function submit(e) {
-        e.preventDefault()
-        post('/missions', {
-            preserveScroll: true,
-            onSuccess: () => reset('mission_name'),
-        })
     }
 
     return (

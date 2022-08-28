@@ -10,7 +10,8 @@ class Mission extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'quest_id'
     ];
 
     public function quest() {
