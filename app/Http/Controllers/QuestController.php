@@ -59,10 +59,11 @@ class QuestController extends Controller
         ]);
 
         Quest::create([
-            'name' => $request->quest_name
+            'name' => $request->quest_name,
+            'user_id' => auth()->id()
         ]);
         
-        return Redirect::route("/quests");
+        return redirect("quests");
     }
 
     /**
@@ -108,6 +109,6 @@ class QuestController extends Controller
     public function destroy(Quest $quest)
     {
         Quest::destroy($quest->id);
-        return Redirect::route("/quests");
+        return redirect("quests");
     }
 }

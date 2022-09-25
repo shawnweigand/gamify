@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('missions', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->string('name');
-            $table->integer('quest_id');
+        Schema::table('quests', function (Blueprint $table) {
+            $table->integer('user_id');
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('missions');
+        Schema::table('quests', function (Blueprint $table) {
+            $table->dropColumn('user_id');
+        });
     }
 };

@@ -10,10 +10,15 @@ class Quest extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name'
+        'name',
+        'user_id'
     ];
 
     public function missions() {
         return $this->hasMany(Mission::class);
+    }
+
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }
