@@ -64,7 +64,7 @@ export default function Quests(props) {
                         </Link>
                     </div>
                 <div className='p-5 collapse' id={quest.name}>
-                    {listMissions(quest.id)}
+                    {/* {listMissions(quest.id)} */}
                 </div>
             </div>
         ))}
